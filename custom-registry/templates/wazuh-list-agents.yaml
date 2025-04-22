@@ -1,0 +1,37 @@
+type: action
+definition:
+  name: lsit_agents
+  namespace: tools.wazuh
+  title: List agents
+  description: List Wazuh agents.
+  display_group: Wazuh
+  doc_url: https://documentation.wazuh.com/current/user-manual/api/reference.html#tag/Agents
+  author: Maxime.W
+  expects:
+    verify_ssl:
+      type: bool
+      description: If False, disables SSL verification for internal networks.
+      default: true
+    auth_token_exp_timeout:
+      type: int
+      description: Change the token base duration
+      default: 900
+    base_url:
+      type: str
+      description: URL for the Wazuh WUI API.
+  steps:
+  - ref: get_access_token
+    action: tools.wazuh.get_access_token
+    args:
+      url: ${{ inputs.base_url }}
+      verify_ssl: ${{ inputs.verify_ssl  }}
+      auth_token_exp_timeout: 900
+  - ref: get_agents
+    action: core.http_request
+    args:
+      url: ${{ inputs.base_url }}/agents
+      method: GET
+      headers:
+        Authorization: Bearer ${{ steps.get_access_token.result }}
+      verify_ssl: ${{ inputs.verify_ssl  }}
+  returns: ${{ FN.join(steps.get_agents.result.data.data.affected_items[*].name, ",") }}

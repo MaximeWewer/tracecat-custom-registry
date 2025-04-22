@@ -3,20 +3,22 @@ requires = ["hatchling >= 1.13.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "custom_actions"  # This must be the same name as your package
-description = "Add your description here"
+name = "custom-registry"  # This must be the same name as your package
+description = "Tracecat actions and integrations registry managed by AgoraCalyce"
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Maxime Wewer" }]
 dynamic = ["version"]
 dependencies = []  # Add your pip dependencies here
 
 [tool.hatch.version]
-path = "custom_actions/__init__.py"
+path = "custom-registry/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["custom_actions"]
+packages = ["custom-registry"]
 # Include YAML templates in pip package
-include = ["/custom_actions", "/custom_actions/**/*.yml"]
+include = ["/custom-registry", "/custom-registry/**/*.yml"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
