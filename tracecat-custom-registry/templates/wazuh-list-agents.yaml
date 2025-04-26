@@ -1,6 +1,6 @@
 type: action
 definition:
-  name: lsit_agents
+  name: list_agents
   namespace: tools.wazuh
   title: List agents
   description: List Wazuh agents.
