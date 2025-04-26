@@ -13,12 +13,12 @@ dynamic = ["version"]
 dependencies = []  # Add your pip dependencies here
 
 [tool.hatch.version]
-path = "custom-registry/__init__.py"
+path = "tracecat-custom-registry/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["custom-registry"]
+packages = ["tracecat-custom-registry"]
 # Include YAML templates in pip package
-include = ["/custom-registry", "/custom-registry/**/*.yml"]
+include = ["/tracecat-custom-registry", "/tracecat-custom-registry/**/*.yml"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
