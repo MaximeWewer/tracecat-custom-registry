@@ -3,7 +3,7 @@ requires = ["hatchling >= 1.13.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "custom-registry"  # This must be the same name as your package
+name = "tracecat-custom-registry"  # This must be the same name as your package
 description = "Tracecat actions and integrations registry managed by AgoraCalyce"
 readme = "README.md"
 requires-python = ">=3.12"
